@@ -104,13 +104,13 @@ inf_general_escuela() {
     return (
       <ScrollView>
         <View>
-          <Text style={styles.subtitulo_mis_vis}>Misión</Text>
+          <Text style={styles.subtitulo}>Misión</Text>
           <Text style={styles.text_mis_vis}>
             {this.state.escuela.mision}
           </Text>
         </View>
         <View>
-          <Text style={styles.subtitulo_mis_vis}>Visión</Text>
+          <Text style={styles.subtitulo}>Visión</Text>
           <Text style={styles.text_mis_vis}>
             {this.state.escuela.vision}
           </Text>
@@ -123,12 +123,14 @@ inf_general_escuela() {
     return (
       <ScrollView>
         <View>
-          <Text style={styles.text_mis_vis}>
+          <Text style={styles.subtitulo}>Campo Profesional</Text>
+          <Text style={styles.text}>
             {this.state.escuela.campo}
           </Text>
         </View>
         <View>
-          <Text style={styles.text_mis_vis}>
+        <Text style={styles.subtitulo}>Perfil Profesional</Text>
+          <Text style={styles.text}>
             {this.state.escuela.perfil}
           </Text>
         </View>
@@ -147,25 +149,25 @@ render() {
           style={{ flex: 1, flexDirection: "column" }}
         >
           <ScrollView>
-            <View style={styles.politicas_calidad}>
+            <View style={styles.encabezado}>
               <Text style={styles.titulo}>Escuela de Ingeniería Mecánica</Text>
             </View>
 
             <View
               style={{
                 alignSelf: "flex-start",
-                paddingTop: 20,
-                paddingLeft: 20,
+                paddingTop: 5,
+                paddingLeft: 10,
               }}
             >
               <Card
-                style={{ height: 160, width: 220 }}
+                style={{ height: 120, width: 200 }}
                 onPress={() => this._showInf_General_Escuela()}
               >
                 <Card.Content
-                  style={{ height: 120, width: 150, alignSelf: "center" }}
+                  style={{ height: 80, width: 130, alignSelf: "center" }}
                 >
-                  <FontAwesome5Icon name="user-check" size={90} />
+                  <FontAwesome5Icon name="user-check" size={60} />
                 </Card.Content>
                 <Card.Content style={{ alignSelf: "center" }}>
                   <Title style={{ fontSize: 18, alignSelf: "center" }}>
@@ -177,13 +179,13 @@ render() {
 
             <View style={{ alignSelf: "center", paddingTop: 20 }}>
               <Card
-                style={{ height: 170, width: 220 }}
+                style={{ height: 130, width: 180, alignSelf: "center" }}
                 onPress={() => this._showMis_Vis_Escuela()}
               >
                 <Card.Content
-                  style={{ height: 120, width: 140, alignSelf: "center" }}
+                  style={{ height: 80, width: 130, alignSelf: "center" }}
                 >
-                  <OcticonsIcon name="checklist" size={110} />
+                  <OcticonsIcon name="checklist" size={60} />
                 </Card.Content>
                 <Card.Content style={{ alignSelf: "center" }}>
                   <Title style={{ fontSize: 18, alignSelf: "center" }}>
@@ -197,20 +199,21 @@ render() {
               style={{
                 alignSelf: "flex-end",
                 paddingTop: 20,
-                paddingRight: 20,
+                paddingRight: 20,              
+                paddingBottom: 30,
               }}
             >
               <Card
-                style={{ height: 170, width: 220 }}
+                style={{ height: 130, width: 150}}
                 onPress={() => this._showCampo_Perfil_Escuela()}
               >
                 <Card.Content
-                  style={{ height: 120, width: 130, alignSelf: "center" }}
+                  style={{ height: 90, width: 130, alignSelf: "center" }}
                 >
-                  <FoundationIcon name="magnifying-glass" size={110} />
+                  <FoundationIcon name="magnifying-glass" size={80} />
                 </Card.Content>
-                <Card.Content style={{ alignSelf: "center" }}>
-                  <Title style={{ fontSize: 18, alignSelf: "center" }}>
+                <Card.Content style={{ alignSelf: "center",  }}>
+                  <Title style={{ fontSize: 18, alignSelf: "center"}}>
                     Campo/Perfil
                   </Title>
                 </Card.Content>
@@ -221,7 +224,7 @@ render() {
               <Dialog
                 visible={this.state.visible_inf_general_escuela}
                 onDismiss={this._hideInf_General_Escuela}
-                style={{ flex: 0.9 }}
+                style={{ flex: 0.8 }}
               >
                 <Dialog.Title style={{ textAlign: "center" }}>
                   Información General
@@ -230,7 +233,7 @@ render() {
                 <Dialog.Actions>
                   <Button
                     onPress={this._hideInf_General_Escuela}
-                    labelStyle={{ color: "#344a72" }}
+                    labelStyle={{ color: "#A64231" }}
                   >
                     Cerrar
                   </Button>
@@ -242,7 +245,7 @@ render() {
               <Dialog
                 visible={this.state.visible_mis_vis_escuela}
                 onDismiss={this._hideMis_Vis_Escuela}
-                style={{ flex: 0.6 }}
+                style={{ flex: 0.9 }}
               >
                 <Dialog.Title style={{ textAlign: "center" }}>
                   Misión/Visión
@@ -251,7 +254,8 @@ render() {
                 <Dialog.Actions>
                   <Button
                     onPress={this._hideMis_Vis_Escuela}
-                    labelStyle={{ color: "#344a72" }}
+                    labelStyle={{ color: "#A64231" }}
+
                   >
                     Cerrar
                   </Button>
@@ -263,16 +267,16 @@ render() {
               <Dialog
                 visible={this.state.visible_campo_perfil_escuela}
                 onDismiss={this._hideCampo_Perfil_Escuela}
-                style={{ flex: 0.9 }}
+                style={{ flex: 0.7 }}
               >
-                <Dialog.Title style={{ textAlign: "center" }}>
+                <Dialog.Title style={{ textAlign: "center",  }}>
                   Campo/Perfil Profesional
                 </Dialog.Title>
                 <Dialog.ScrollArea>{this.campo_perfil_escuela()}</Dialog.ScrollArea>
                 <Dialog.Actions>
                   <Button
                     onPress={this._hideCampo_Perfil_Escuela}
-                    labelStyle={{ color: "#344a72" }}
+                    labelStyle={{ color: "#A64231" }}
                   >
                     Cerrar
                   </Button>
@@ -336,10 +340,11 @@ const styles = StyleSheet.create({
     paddingRight: 25,
   },
 
-  politicas_calidad: {
+  encabezado: {
     flex: 1,
-    marginTop: 5,
-    alignSelf: "center",
+    alignSelf: "center",    
+    paddingBottom: 0,
+    paddingTop: 1,
   },
 
   titulo: {

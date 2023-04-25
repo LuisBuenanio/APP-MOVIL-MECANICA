@@ -1,6 +1,6 @@
 import * as React from "react";
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import Asociaciones from "./Asociaciones";
+import Int_Asociacion from "./Int_Asociacion";
 import Asociacion from "./Asociacion";
 
 
@@ -27,7 +27,7 @@ export default function AppNavigatorAsociacion() {
     
     >
       <Tab3.Screen name="Asociación" component={Asociacion} />      
-      <Tab3.Screen name="Asociaciones" component={Asociaciones} />
+      <Tab3.Screen name="Integrantes Aso" component={Int_Asociacion} />
     </Tab3.Navigator>
   );
 }

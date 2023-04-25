@@ -14,7 +14,7 @@ import {
 } from "react-native-paper";
 import urls from "../../urls";
 
-class Autoridades extends Component {
+class Int_Asociacion extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -108,7 +108,7 @@ class Autoridades extends Component {
           >
             <ScrollView>
               <View style={styles.autoridades}>
-                <Text style={styles.titulo}>Autoridades de la Facultad</Text>
+                <Text style={styles.titulo}>Integrantes Asociación Escuela de Mecánica</Text>
               </View>
 
               <View style={{ alignSelf: "center", paddingTop: 20 }}>
@@ -290,9 +290,11 @@ const styles = StyleSheet.create({
 
   titulo: {
     paddingTop: 15,
+    paddingRight: 5,
     fontWeight: "bold",
     fontSize: 25,
     color: "#344a72",
+    textAlign: "center",
   },
   text_press: {
     fontSize: 25,
@@ -306,4 +308,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Autoridades;
+export default Int_Asociacion;
