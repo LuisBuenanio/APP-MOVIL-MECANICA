@@ -21,7 +21,7 @@ import Communications from "react-native-communications";
 import MaterialCommunityIconsIcon from "react-native-vector-icons/MaterialCommunityIcons";
 import urls from "../../urls";
 
-class Asociacion extends Component {
+class Noticias extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -62,7 +62,7 @@ class Asociacion extends Component {
           >
             <ScrollView>
             <View style={styles.encabezado}>
-                <Text style={styles.titulo}>Asociaciones de Estudiantes</Text>
+                <Text style={styles.titulo}>Últimas Noticias</Text>
             </View>
             <View
                 style={{
@@ -226,4 +226,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Asociacion;
+export default Noticias;

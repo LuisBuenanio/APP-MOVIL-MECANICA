@@ -19,75 +19,115 @@ class Int_Asociacion extends Component {
     super(props);
     this.state = {
       loading: true,
-      decana: null,
-      tipo_decana: null,
-      vicedecano: null,
-      tipo_vicedecano: null,
-      mecanica: null,
-      tipo_mecanica: null,
-      industrial: null,
-      tipo_industrial: null,
-      automotriz: null,
-      tipo_automotriz: null,
+      presidente: null,
+      tipo_presidente: null,
+      vicepresidente: null,
+      tipo_vicepresidente: null,
+      tesorero: null,
+      tipo_tesorero: null,
+      secretario: null,
+      tipo_secretario: null,
+      dl_pr_fepoch: null,
+      tipo_dl_pr_fepoch: null,
+      dl_sup_fepoch: null,
+      tipo_dl_sup_fepoch: null, 
+      ldp_principal: null,
+      tipo_ldp_principal: null,
+      ldp_suplente: null,
+      tipo_ldp_suplente: null,
+      inclusion: null,
+      tipo_inclusion: null, 
       
 
-      url_decana: urls.API_URL_API + "/autoridades/1",
-      url_vicedecano: urls.API_URL_API + "/autoridades/3",
-      url_mecanica: urls.API_URL_API + "/autoridades/5",
-      url_industrial: urls.API_URL_API + "/autoridades/5",
-      url_automotriz: urls.API_URL_API + "/autoridades/6",
+      url_presidente: urls.API_URL_API + "/integrantes/1",
+      url_vicepresidente: urls.API_URL_API + "/integrantes/2",
+      url_tesorero: urls.API_URL_API + "/integrantes/3",
+      url_secretario: urls.API_URL_API + "/integrantes/4",
+      url_dl_pr_fepoch: urls.API_URL_API + "/integrantes/5",
+      url_dl_sup_fepoch: urls.API_URL_API + "/integrantes/6", 
+      url_ldp_principal: urls.API_URL_API + "/integrantes/7",
+      url_ldp_suplente: urls.API_URL_API + "/integrantes/8",
+      url_inclusion: urls.API_URL_API + "/integrantes/9", 
 
-      url_tipo_decana: urls.API_URL_API + "/tipo_autoridades/1",
-      url_tipo_vicedecano: urls.API_URL_API + "/tipo_autoridades/2",
-      url_tipo_mecanica: urls.API_URL_API + "/tipo_autoridades/3",
-      url_tipo_industrial: urls.API_URL_API + "/tipo_autoridades/4",
-      url_tipo_automotriz: urls.API_URL_API + "/tipo_autoridades/5",
+      url_tipo_presidente: urls.API_URL_API + "/tipo_integrantes/1",
+      url_tipo_vicepresidente: urls.API_URL_API + "/tipo_integrantes/2",
+      url_tipo_tesorero: urls.API_URL_API + "/tipo_integrantes/3",
+      url_tipo_secretario: urls.API_URL_API + "/tipo_integrantes/4",
+      url_tipo_dl_pr_fepoch: urls.API_URL_API + "/tipo_integrantes/5",
+      url_tipo_dl_sup_fepoch: urls.API_URL_API + "/tipo_integrantes/6", 
+      url_tipo_ldp_principal: urls.API_URL_API + "/tipo_integrantes/7",
+      url_tipo_ldp_suplente: urls.API_URL_API + "/tipo_integrantes/8",
+      url_tipo_inclusion: urls.API_URL_API + "/tipo_integrantes/9",
     };
   }
 
   componentDidMount = () => {
     Promise.all([
-      fetch(this.state.url_decana),
-      fetch(this.state.url_vicedecano),
-      fetch(this.state.url_mecanica),
-      fetch(this.state.url_industrial),
-      fetch(this.state.url_automotriz),
+      fetch(this.state.url_presidente),
+      fetch(this.state.url_vicepresidente),
+      fetch(this.state.url_tesorero),
+      fetch(this.state.url_secretario),
+      fetch(this.state.url_dl_pr_fepoch),
+      fetch(this.state.url_dl_sup_fepoch), 
+      fetch(this.state.url_ldp_principal),
+      fetch(this.state.url_ldp_suplente),
+      fetch(this.state.url_inclusion), 
 
-      fetch(this.state.url_tipo_decana),
-      fetch(this.state.url_tipo_vicedecano),
-      fetch(this.state.url_tipo_mecanica),
-      fetch(this.state.url_tipo_industrial),
-      fetch(this.state.url_tipo_automotriz),
+      fetch(this.state.url_tipo_presidente),
+      fetch(this.state.url_tipo_vicepresidente),
+      fetch(this.state.url_tipo_tesorero),
+      fetch(this.state.url_tipo_secretario),
+      fetch(this.state.url_tipo_dl_pr_fepoch),
+      fetch(this.state.url_tipo_dl_sup_fepoch), 
+      fetch(this.state.url_tipo_ldp_principal),
+      fetch(this.state.url_tipo_ldp_suplente),
+      fetch(this.state.url_tipo_inclusion),
     ])
       .then((values) => {
         return Promise.all(values.map((r) => r.json()));
       })
       .then(
         ([
-          dec,
-          vice,
-          mec,
-          ind,
-          auto,
+          presidente,
+          vicepresidente,
+          tesorero,
+          secretario,
+          dl_pr_fepoch,
+          dl_sup_fepoch, 
+          ldp_principal,
+          ldp_suplente,
+          inclusion,
 
-          tipo_dec,
-          tipo_vice,
-          tipo_mec,
-          tipo_ind,
-          tipo_auto,
+          tipo_presidente,
+          tipo_vicepresidente,
+          tipo_tesorero,
+          tipo_secretario,
+          tipo_dl_pr_fepoch,
+          tipo_dl_sup_fepoch, 
+          tipo_ldp_principal,
+          tipo_ldp_suplente,
+          tipo_inclusion, 
         ]) => {
           this.setState({
-            decana: dec.datos,
-            vicedecano: vice.datos,
-            mecanica: mec.datos,
-            industrial: ind.datos,
-            automotriz: auto.datos,
+            presidente: presidente.datos,
+            vicepresidente: vicepresidente.datos,
+            tesorero: tesorero.datos,
+            secretario: secretario.datos,
+            dl_pr_fepoch: dl_pr_fepoch.datos,
+            dl_sup_fepoch: dl_sup_fepoch.datos, 
+            ldp_principal: ldp_principal.datos,
+            ldp_suplente: ldp_suplente.datos,
+            inclusion: inclusion.datos, 
 
-            tipo_decana: tipo_dec.datos,
-            tipo_vicedecano: tipo_vice.datos,
-            tipo_mecanica: tipo_mec.datos,
-            tipo_industrial: tipo_ind.datos,
-            tipo_automotriz: tipo_auto.datos,
+            tipo_presidente: tipo_presidente.datos,
+            tipo_vicepresidente: tipo_vicepresidente.datos,
+            tipo_tesorero: tipo_tesorero.datos,
+            tipo_secretario: tipo_secretario.datos,
+            tipo_dl_pr_fepoch: tipo_dl_pr_fepoch.datos,
+            tipo_dl_sup_fepoch: tipo_dl_sup_fepoch.datos,
+            tipo_ldp_principal: tipo_ldp_principal.datos,
+            tipo_ldp_suplente: tipo_ldp_suplente.datos,
+            tipo_inclusion: tipo_inclusion.datos, 
             loading: false,
           });
         }
@@ -117,9 +157,9 @@ class Int_Asociacion extends Component {
                     style={{ height: 190, width: 170, alignSelf: "center" }}
                     source={{
                       uri:
-                      urls.API_URL_AUT +
+                      urls.API_URL_INT_ASOC +
                         "/" +
-                        this.state.decana.foto,
+                        this.state.presidente.foto,
                     }}
                   />
                   <Card.Content style={{ alignSelf: "center" }}>
@@ -127,10 +167,10 @@ class Int_Asociacion extends Component {
                       style={{ fontSize: 16,
                         textAlign: "center", fontFamily: "antic-slab" }}
                     >
-                      {this.state.decana.nombre}
+                      {this.state.presidente.nombre}
                     </Paragraph>
                     <Title style={{ fontSize: 18, alignSelf: "center" }}>
-                      {this.state.tipo_decana.descripcion}
+                      {this.state.tipo_presidente.descripcion}
                     </Title>
                   </Card.Content>
                 </Card>
@@ -142,9 +182,9 @@ class Int_Asociacion extends Component {
                     style={{ height: 190, width: 170, alignSelf: "center" }}
                     source={{
                       uri:
-                      urls.API_URL_AUT +
+                      urls.API_URL_INT_ASOC +
                         "/" +
-                        this.state.vicedecano.foto,
+                        this.state.vicepresidente.foto,
                     }}
                   />
                   <Card.Content style={{ alignSelf: "center" }}>
@@ -152,10 +192,10 @@ class Int_Asociacion extends Component {
                       style={{ fontSize: 16, 
                         textAlign: "center", fontFamily: "antic-slab" }}
                     >
-                      {this.state.vicedecano.nombre}
+                      {this.state.vicepresidente.nombre}
                     </Paragraph>
                     <Title style={{ fontSize: 18, alignSelf: "center" }}>
-                      {this.state.tipo_vicedecano.descripcion}
+                      {this.state.tipo_vicepresidente.descripcion}
                     </Title>
                   </Card.Content>
                 </Card>
@@ -167,9 +207,9 @@ class Int_Asociacion extends Component {
                     style={{ height: 190, width: 170, alignSelf: "center" }}
                     source={{
                       uri:
-                      urls.API_URL_AUT +
+                      urls.API_URL_INT_ASOC +
                         "/" +
-                        this.state.mecanica.foto,
+                        this.state.tesorero.foto,
                     }}
                   />
                   <Card.Content style={{ alignSelf: "center" }}>
@@ -180,10 +220,10 @@ class Int_Asociacion extends Component {
                         fontFamily: "antic-slab",
                       }}
                     >
-                      {this.state.mecanica.nombre}
+                      {this.state.tesorero.nombre}
                     </Paragraph>
                     <Title style={{ fontSize: 18, textAlign: "center" }}>
-                      {this.state.tipo_mecanica.descripcion}
+                      {this.state.tipo_tesorero.descripcion}
                     </Title>
                   </Card.Content>
                 </Card>
@@ -195,9 +235,9 @@ class Int_Asociacion extends Component {
                     style={{ height: 170, width: 140, alignSelf: "center" }}
                     source={{
                       uri:
-                      urls.API_URL_AUT +
+                      urls.API_URL_INT_ASOC +
                         "/" +
-                        this.state.industrial.foto,
+                        this.state.secretario.foto,
                     }}
                   />
                   <Card.Content style={{ alignSelf: "center" }}>
@@ -208,10 +248,10 @@ class Int_Asociacion extends Component {
                         fontFamily: "antic-slab",
                       }}
                     >
-                      {this.state.industrial.nombre}
+                      {this.state.secretario.nombre}
                     </Paragraph>
                     <Title style={{ fontSize: 18, textAlign: "center" }}>
-                      {this.state.tipo_industrial.descripcion}
+                      {this.state.tipo_secretario.descripcion}
                     </Title>
                   </Card.Content>
                 </Card>
@@ -223,9 +263,9 @@ class Int_Asociacion extends Component {
                     style={{ height: 190, width: 170, alignSelf: "center" }}
                     source={{
                       uri:
-                      urls.API_URL_AUT +
+                      urls.API_URL_INT_ASOC +
                         "/" +
-                        this.state.automotriz.foto,
+                        this.state.dl_pr_fepoch.foto,
                     }}
                   />
                   <Card.Content style={{ alignSelf: "center" }}>
@@ -236,14 +276,125 @@ class Int_Asociacion extends Component {
                         fontFamily: "antic-slab",
                       }}
                     >
-                      {this.state.automotriz.nombre}
+                      {this.state.dl_pr_fepoch.nombre}
                     </Paragraph>
                     <Title style={{ fontSize: 18, textAlign: "center" }}>
-                      {this.state.tipo_automotriz.descripcion}
+                      {this.state.tipo_dl_pr_fepoch.descripcion}
                     </Title>
                   </Card.Content>
                 </Card>
-              </View>       
+              </View>   
+              <View style={{ alignSelf: "center", paddingTop: 30 }}>
+                <Card style={{ height: 310, width: 260, paddingTop: 10 }}>
+                  <Card.Cover
+                    style={{ height: 190, width: 170, alignSelf: "center" }}
+                    source={{
+                      uri:
+                      urls.API_URL_INT_ASOC +
+                        "/" +
+                        this.state.dl_sup_fepoch.foto,
+                    }}
+                  />
+                  <Card.Content style={{ alignSelf: "center" }}>
+                    <Paragraph
+                      style={{
+                        fontSize: 16,
+                        textAlign: "center",
+                        fontFamily: "antic-slab",
+                      }}
+                    >
+                      {this.state.dl_sup_fepoch.nombre}
+                    </Paragraph>
+                    <Title style={{ fontSize: 18, textAlign: "center" }}>
+                      {this.state.tipo_dl_sup_fepoch.descripcion}
+                    </Title>
+                  </Card.Content>
+                </Card>
+              </View>  
+
+              <View style={{ alignSelf: "center", paddingTop: 30 }}>
+                <Card style={{ height: 310, width: 260, paddingTop: 10 }}>
+                  <Card.Cover
+                    style={{ height: 190, width: 170, alignSelf: "center" }}
+                    source={{
+                      uri:
+                      urls.API_URL_INT_ASOC +
+                        "/" +
+                        this.state.ldp_principal.foto,
+                    }}
+                  />
+                  <Card.Content style={{ alignSelf: "center" }}>
+                    <Paragraph
+                      style={{
+                        fontSize: 16,
+                        textAlign: "center",
+                        fontFamily: "antic-slab",
+                      }}
+                    >
+                      {this.state.ldp_principal.nombre}
+                    </Paragraph>
+                    <Title style={{ fontSize: 18, textAlign: "center" }}>
+                      {this.state.tipo_ldp_principal.descripcion}
+                    </Title>
+                  </Card.Content>
+                </Card>
+              </View> 
+                  
+              <View style={{ alignSelf: "center", paddingTop: 30 }}>
+                <Card style={{ height: 310, width: 260, paddingTop: 10 }}>
+                  <Card.Cover
+                    style={{ height: 190, width: 170, alignSelf: "center" }}
+                    source={{
+                      uri:
+                      urls.API_URL_INT_ASOC +
+                        "/" +
+                        this.state.ldp_suplente.foto,
+                    }}
+                  />
+                  <Card.Content style={{ alignSelf: "center" }}>
+                    <Paragraph
+                      style={{
+                        fontSize: 16,
+                        textAlign: "center",
+                        fontFamily: "antic-slab",
+                      }}
+                    >
+                      {this.state.ldp_suplente.nombre}
+                    </Paragraph>
+                    <Title style={{ fontSize: 18, textAlign: "center" }}>
+                      {this.state.tipo_ldp_suplente.descripcion}
+                    </Title>
+                  </Card.Content>
+                </Card>
+              </View> 
+
+              <View style={{ alignSelf: "center", paddingTop: 30, paddingBottom:30, }}>
+                <Card style={{ height: 330, width: 260, paddingTop: 10 }}>
+                  <Card.Cover
+                    style={{ height: 190, width: 170, alignSelf: "center" }}
+                    source={{
+                      uri:
+                      urls.API_URL_INT_ASOC +
+                        "/" +
+                        this.state.inclusion.foto,
+                    }}
+                  />
+                  <Card.Content style={{ alignSelf: "center" }}>
+                    <Paragraph
+                      style={{
+                        fontSize: 16,
+                        textAlign: "center",
+                        fontFamily: "antic-slab",
+                      }}
+                    >
+                      {this.state.inclusion.nombre}
+                    </Paragraph>
+                    <Title style={{ fontSize: 18, textAlign: "center" }}>
+                      {this.state.tipo_inclusion.descripcion}
+                    </Title>
+                  </Card.Content>
+                </Card>
+              </View>     
             </ScrollView>
           </ImageBackground>
         </View>
