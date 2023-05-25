@@ -7,8 +7,6 @@ import {
   ScrollView,
   ActivityIndicator,
   Linking,
-  FlatList,
-  Image,
 } from "react-native";
 import {
   Dialog,
@@ -17,7 +15,7 @@ import {
   Title,
   Button,
   Divider,
-  Chip,  
+  Chip,
 } from "react-native-paper";
 import Communications from "react-native-communications";
 import MaterialCommunityIconsIcon from "react-native-vector-icons/MaterialCommunityIcons";
@@ -28,35 +26,41 @@ class Noticias extends Component {
     super(props);
     this.state = {
       
-      loading: false,
-      noticias: [],
+      loading: true,
+      noticias: null,
 
-      url_noticias: urls.API_URL_API + "/noticias",
+      url_noticias: urls.API_URL_API + "/noticias/1",
+
+      visible_noticias: false,
     };
   
   }
-  componentDidMount() {
-    this.getNoticias();
-  }
-
-  getNoticias = () => {
-    this.setState({ loading: true });
-
-    fetch(this.state.url_noticias)
-    .then((res) => res.json())
-    .then(res => {
-
-        this.setState({ 
-          noticias: res.datos, 
-          loading: false });
-      })
-    .catch((error) => {
-        console.error(error);
-      });
+  _showNoticias = () => this.setState({ visible_noticias: true });
+  _hideNoticias = () => this.setState({ visible_noticias: false });
   
-
+  componentDidMount = () => {
+    Promise.all([
+      
+        fetch(this.state.url_noticias), 
+    ])
+    .then((values) => {
+      return Promise.all(values.map((r) => r.json()));
+    })
+    .then(([not,]) => 
+    {
+      this.setState({ 
+        noticias: not.datos,
+        loading: false 
+      });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
     
   };
+
+  
+
   render() {
     const { loading } = this.state;
     if (!loading) {
@@ -73,41 +77,30 @@ class Noticias extends Component {
 
               <View
                 style={{
-                  flex: 1,
-                  paddingTop: 50,
-                  paddingLeft: 5,
+                  alignSelf: "center",
+                  paddingTop: 20,
                   paddingBottom: 20,
                 }}
               >
-              <FlatList
-                  data={this.state.noticias}
-                  renderItem={({ item }) => (
-                    <View style={{}}>
-                          {item.imagen_url &&
-                              <Image source={{ uri:  urls.API_URL_NOT + "/" + 
-                              item.imagen_url }} style={{ width: 460, height: 300, marginRight: 10, alignSelf: "center", alignContent: "center" }} />
-                          }
-                                     
-                          <View>                          
-                            <Text style={{fontSize: 18, fontWeight: "bold",}} >{item.titulo}</Text>  
-                            <Text style={{fontSize: 14}} >{item.entradilla}</Text>
-                            <Text style={{fontSize: 14}} >{item.contenido}</Text>
-                          </View>                     
-                      </View>  
-                      /* <View>
-                      <Text>{item.titulo}</Text>
-                      <Text>{item.contenido}</Text>
-                      {item.imagen && (
-                        <Image source={{ uri: urls.API_URL_NOT + "/" +item.imagen_url }} style={{ width: 200, height: 200 }} />
-                      )}
-                    </View> */
-                                   
-                  )}
-                  keyExtractor={(item, index) => index.toString()}              
-              >
-
-              </FlatList>
-               
+                <Card
+                  style={{ height: 250, width: 330 }}
+                  onPress={() => this._showNoticias()}
+                >
+                  <Card.Cover
+                    style={{ height: 180, width: 330, alignSelf: "center" }}
+                    source={{
+                      uri:
+                        urls.API_URL_NOT +
+                        "/" +
+                        this.state.noticias.image,
+                    }}
+                  />
+                  <Card.Content style={{ alignSelf: "center" }}>
+                    <Title style={{ fontSize: 17, textAlign: "center" }}>
+                      {this.state.noticias.titulo}
+                    </Title>
+                  </Card.Content>
+                </Card>
               </View>              
             </ScrollView>
           </ImageBackground>
@@ -119,10 +112,11 @@ class Noticias extends Component {
           source={require("../../assets/images/mecanica-transparente.png")}
           style={{ flex: 1, flexDirection: "column", justifyContent: "center" }}
         >
-          
-          <View style={styles.container}>
-            <Text>Cargando noticias...!</Text>
-          </View>
+          <ActivityIndicator
+            size="large"
+            color="#344a72"
+            justifyContent="space-around"
+          />
         </ImageBackground>
       );
     }
