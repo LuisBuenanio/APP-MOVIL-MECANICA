@@ -161,7 +161,7 @@ render() {
               }}
             >
               <Card
-                style={{ height: 120, width: 200 }}
+                style={{ height: 150, width: 200 }}
                 onPress={() => this._showInf_General_Escuela()}
               >
                 <Card.Content
@@ -179,7 +179,7 @@ render() {
 
             <View style={{ alignSelf: "center", paddingTop: 20 }}>
               <Card
-                style={{ height: 130, width: 180, alignSelf: "center" }}
+                style={{ height: 150, width: 180, alignSelf: "center" }}
                 onPress={() => this._showMis_Vis_Escuela()}
               >
                 <Card.Content
@@ -204,7 +204,7 @@ render() {
               }}
             >
               <Card
-                style={{ height: 130, width: 150}}
+                style={{ height: 150, width: 150}}
                 onPress={() => this._showCampo_Perfil_Escuela()}
               >
                 <Card.Content

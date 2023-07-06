@@ -17,7 +17,9 @@ export default function AppNavigatorInicio() {
         backgroundColor: "white"
       },
       tabBarLabelStyle: { fontSize: 12},
-      tabBarStyle: { backgroundColor: "#293A59"},
+      tabBarStyle: { 
+        backgroundColor: "#000000"
+      },
       
     }}
     

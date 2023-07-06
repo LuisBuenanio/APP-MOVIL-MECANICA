@@ -160,7 +160,7 @@ class Asociacion extends Component {
         >
           <ActivityIndicator
             size="large"
-            color="#344a72"
+            color="#da0303"
             justifyContent="space-around"
           />
         </ImageBackground>

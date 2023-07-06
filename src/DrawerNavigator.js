@@ -25,8 +25,8 @@ function DrawerNavigator() {
       
       screenOptions= {{
         drawerActiveBackgroundColor : "#ccd4e3",
-        drawerInactiveTintColor : "#6080bd",
-        drawerActiveTintColor : "#344a72",
+        drawerInactiveTintColor : "#000000",
+        drawerActiveTintColor : "#000000",
         drawerItemStyle : { borderRadius: 8,},
         drawerLabelStyle : {  fontSize: 15, fontWeight: "bold"},
         paddingTop: 0,
@@ -43,10 +43,10 @@ function DrawerNavigator() {
           options={{ 
             headerShown: false,
             drawerLabel: 'Inicio',
-            drawerInactiveTintColor : "#6080bd",
-            drawerActiveTintColor : "#344a72",        
+            drawerInactiveTintColor : "#000000",
+            drawerActiveTintColor : "#000000",        
             drawerIcon : () => (
-            <MaterialCommunityIcons name="home" size={26} color={"#344a72"}/>
+            <MaterialCommunityIcons name="home" size={26} color={"#000000"}/>
             ),
             
           }}/>
@@ -56,7 +56,7 @@ function DrawerNavigator() {
           headerShown: false,
           drawerLabel: 'Acerca de',
           drawerIcon : () => (
-            <MaterialCommunityIcons name="account-question" size={26} color={"#6080bd"} />
+            <MaterialCommunityIcons name="account-question" size={26} color={"#000000"} />
           ),
         }}/>        
         <Drawer.Screen name="Contáctanos" component={ContactanosScreen} 
@@ -64,7 +64,7 @@ function DrawerNavigator() {
           headerShown: false,
           drawerLabel: 'Contáctanos',
           drawerIcon : () => (
-            <MaterialCommunityIcons name="account-supervisor-circle" size={26} color={"#6080bd"} />
+            <MaterialCommunityIcons name="account-supervisor-circle" size={26} color={"#000000"} />
           ),        
         }} />       
                

@@ -39,11 +39,22 @@ class Index extends Component {
     return (
       <PaperProvider>
         <Appbar.Header style={{ backgroundColor: "#C64D4D" }}>
-          <Appbar.Action
+          <Appbar.Action 
             icon="menu"
             onPress={this.props.navigation.openDrawer}
           />
-          <Appbar.Content  style={{ color: "#C64D4D" }} title="Mec App" />
+      {/* <Appbar.Content
+        title="MEC App v1.0.1"
+        titleStyle={{
+          color: "#FFFFFF",
+          fontWeight: "bold",
+          borderWidth: 2, // Ajusta el ancho del borde según tus necesidades
+          borderColor: "#FFFFFF", // Cambia el color del borde según tus necesidades
+          padding: 5, // Ajusta el espaciado interior del borde según tus necesidades
+        }}
+      /> */}
+
+          <Appbar.Content  titleStyle={{ color: "#FFFFFF", fontWeight: "bold", padding: 5}} title="Mec App" />
           {/*<Appbar.Action icon="dots-vertical" />*/}
         </Appbar.Header>
      
@@ -54,7 +65,7 @@ class Index extends Component {
                 justifyContent: "center",
               }}
               initialRouteName = "AppNavigatorInicio"
-              activeColor = "#ffffff"
+              activeColor = "#000000"
               tabBarLabelStyle = {{fontSize: 0}} 
               tabBarLabelPosition = {{position: "top"}}
                           

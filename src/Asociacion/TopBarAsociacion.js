@@ -20,7 +20,7 @@ export default function AppNavigatorAsociacion() {
         fontSize: 10, 
       },
       tabBarStyle: { 
-        backgroundColor: "#293A59"
+        backgroundColor: "#000000"
       },
       
     }}
